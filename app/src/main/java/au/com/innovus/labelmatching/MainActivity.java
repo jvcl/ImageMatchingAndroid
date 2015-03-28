@@ -92,6 +92,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Log.d("TAG", fileUri.toString() );
                 fileImage = new File(fileUri.getPath());
 
+                uploadImage();
+
                 /*
                 //Decode image size
                 BitmapFactory.Options o = new BitmapFactory.Options();
@@ -123,6 +125,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 // Image capture failed, advise user
             }
         }
+    }
+
+    private void uploadImage() {
+        Intent i = new Intent(MainActivity.this, ResultActivity.class);
+        i.putExtra("filePath", fileUri.getPath());
+        startActivity(i);
     }
 
     private Bitmap decodeFile(File f) throws IOException {
