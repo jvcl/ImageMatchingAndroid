@@ -87,8 +87,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 // Image captured and saved to fileUri specified in the Intent
 
                 Toast.makeText(this, "Image saved to:\n" + fileUri, Toast.LENGTH_LONG).show();
-                ImageView image = (ImageView) findViewById(R.id.imageView);
-                image.setImageURI(fileUri);
                 Log.d("TAG", fileUri.toString() );
                 fileImage = new File(fileUri.getPath());
 
