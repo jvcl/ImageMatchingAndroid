@@ -20,25 +20,24 @@ public class ResultActivity extends Activity {
         String filePath = getIntent().getStringExtra("filePath");
 
         if (filePath != null) {
-            // Displaying the image
-            ImageView imageView = (ImageView) findViewById(R.id.imageView);
-            BitmapFactory.Options options = new BitmapFactory.Options();
-
-            // down sizing image as it throws OutOfMemory Exception for larger
-            // images
-            options.inSampleSize = 8;
-
-            final Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
-
-            imageView.setImageBitmap(bitmap);
-
-
-
+            previewImage(filePath);
         } else {
             Toast.makeText(getApplicationContext(),
                     "Sorry, file path is missing!", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    private void previewImage(String filePath){
+        // Displaying the image
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+
+        // down sizing image as it throws OutOfMemory Exception for larger
+        // images
+        options.inSampleSize = 8;
+        Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
+        imageView.setImageBitmap(bitmap);
     }
 
 
