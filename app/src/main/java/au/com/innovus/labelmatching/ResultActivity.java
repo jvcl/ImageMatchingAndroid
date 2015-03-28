@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,6 +39,8 @@ public class ResultActivity extends Activity {
         options.inSampleSize = 8;
         Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
         imageView.setImageBitmap(bitmap);
+
+        new UploadToServer().execute();
     }
 
 
@@ -62,4 +65,28 @@ public class ResultActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private class UploadToServer extends AsyncTask<Void, Integer, String>{
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+    }
+
 }
