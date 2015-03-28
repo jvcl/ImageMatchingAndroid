@@ -3,6 +3,7 @@ package au.com.innovus.labelmatching;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,6 +28,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     private Uri fileUri;
     public static final int MEDIA_TYPE_IMAGE = 1;
+    File fileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +70,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             // create Intent to take a picture and return control to the calling application
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-            fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
+            fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
             // start the image capture Intent
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
@@ -82,9 +87,36 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 // Image captured and saved to fileUri specified in the Intent
 
                 Toast.makeText(this, "Image saved to:\n" + fileUri, Toast.LENGTH_LONG).show();
-
                 ImageView image = (ImageView) findViewById(R.id.imageView);
                 image.setImageURI(fileUri);
+                Log.d("TAG", fileUri.toString() );
+                fileImage = new File(fileUri.getPath());
+
+                /*
+                //Decode image size
+                BitmapFactory.Options o = new BitmapFactory.Options();
+                o.inJustDecodeBounds = true;
+                try {
+                    BitmapFactory.decodeStream(new FileInputStream(fileImage),null,o);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                Log.d("TAG", o.outWidth+"" );
+                Log.d("TAG", o.outHeight+"" );
+                Log.d("TAG", fileImage.getAbsolutePath()+"" );
+                Bitmap bitmap = null;
+                try {
+                    bitmap = decodeFile(fileImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Log.d("TAG", bitmap.getHeight() + "");
+                Log.d("TAG", bitmap.getWidth()+"" );
+
+                */
+
             } else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the image capture
             } else {
@@ -93,7 +125,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    private Bitmap decodeFile(File f) throws IOException {
+        Bitmap b = null;
 
+        //Decode image size
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+
+        FileInputStream fis = new FileInputStream(f);
+        BitmapFactory.decodeStream(fis, null, o);
+        fis.close();
+        int IMAGE_MAX_SIZE = 1024;
+
+        int scale = 1;
+        if (o.outHeight > IMAGE_MAX_SIZE || o.outWidth > IMAGE_MAX_SIZE) {
+            scale = (int)Math.pow(2, (int) Math.ceil(Math.log(IMAGE_MAX_SIZE /
+                    (double) Math.max(o.outHeight, o.outWidth)) / Math.log(0.5)));
+        }
+
+        //Decode with inSampleSize
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        fis = new FileInputStream(f);
+        b = BitmapFactory.decodeStream(fis, null, o2);
+        fis.close();
+
+        return b;
+    }
 
     /** Create a file Uri for saving an image */
     private static Uri getOutputMediaFileUri(int type){
