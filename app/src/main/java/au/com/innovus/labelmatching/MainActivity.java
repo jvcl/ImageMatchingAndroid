@@ -43,5 +43,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+        //Get if of view
+        int id = v.getId();
+
+        //Button Match pressed, start camera activity
+        if (id == R.id.button_match){
+
+        }
+
+
     }
 }
