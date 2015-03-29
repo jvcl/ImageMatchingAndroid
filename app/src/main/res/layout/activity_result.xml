@@ -72,7 +72,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:elevation="2dp"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -87,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_description"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:layout_margin="10dp" />
 
             </LinearLayout>
@@ -114,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_ingredients"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
