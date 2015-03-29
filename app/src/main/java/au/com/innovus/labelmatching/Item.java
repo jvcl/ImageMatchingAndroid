@@ -15,4 +15,16 @@ public class Item {
     public String toString() {
         return title + " " + origin + " " + category;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public String getCategory() {
+        return category;
+    }
 }

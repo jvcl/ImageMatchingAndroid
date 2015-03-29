@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -38,14 +39,13 @@ public class ResultActivity extends Activity {
     String upLoadServerUri = "http://192.168.1.31:5000/upload";
     int serverResponseCode = 0;
 
-    private Item item;
+    private Item item = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         filePath = getIntent().getStringExtra("filePath");
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         if (filePath != null) {
             previewImage(filePath);
@@ -242,19 +242,24 @@ public class ResultActivity extends Activity {
 
         @Override
         protected void onPreExecute() {
-            progressBar.setProgress(0);
             super.onPreExecute();
         }
 
         @Override
         protected void onProgressUpdate(Integer... progress) {
-            progressBar.setProgress(progress[0]);
             super.onProgressUpdate(progress);
         }
 
         @Override
         protected void onPostExecute(String s) {
+            if (item != null){
+                ((TextView) findViewById(R.id.textView_title)).setText(item.getTitle());
+                ((TextView) findViewById(R.id.textView_category)).setText(item.getCategory());
+                ((TextView) findViewById(R.id.textView_origin)).setText(item.getOrigin());
+            }
+
             super.onPostExecute(s);
+
         }
     }
 
