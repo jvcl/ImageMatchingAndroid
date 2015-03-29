@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -35,6 +37,8 @@ public class ResultActivity extends Activity {
     private ProgressBar progressBar;
     String upLoadServerUri = "http://192.168.1.31:5000/upload";
     int serverResponseCode = 0;
+
+    private Item item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,12 +179,10 @@ public class ResultActivity extends Activity {
                 bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 
                 while (bytesRead > 0) {
-
                     dos.write(buffer, 0, bufferSize);
                     bytesAvailable = fileInputStream.available();
                     bufferSize = Math.min(bytesAvailable, maxBufferSize);
                     bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
                 }
 
                 // send multipart form data necesssary after file data...
@@ -203,8 +205,13 @@ public class ResultActivity extends Activity {
                     br.close();
                     String ss = sb.toString();
 
-                    Log.d(TAG, ss);
+
+
+                    Gson gson = new Gson();
+                    item = gson.fromJson(ss,Item.class);
+                    Log.d(TAG, item.toString());
                     // OK ..
+
                 }
 
                 //close the streams //
