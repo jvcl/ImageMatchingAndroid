@@ -2,6 +2,7 @@ package au.com.innovus.labelmatching;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -35,7 +36,7 @@ public class ResultActivity extends Activity {
 
     String filePath;
     private static final String TAG = MainActivity.class.getSimpleName();
-    private ProgressBar progressBar;
+    ProgressDialog progress;
     String upLoadServerUri = "http://192.168.1.31:5000/upload";
     int serverResponseCode = 0;
 
@@ -45,6 +46,7 @@ public class ResultActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        progress = new ProgressDialog(this);
         filePath = getIntent().getStringExtra("filePath");
 
         if (filePath != null) {
@@ -66,7 +68,9 @@ public class ResultActivity extends Activity {
         options.inSampleSize = 8;
         Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
         imageView.setImageBitmap(bitmap);
-
+        progress.setTitle("Matching");
+        progress.setMessage("Wait while loading...");
+        progress.show();
         new UploadToServer().execute();
     }
 
@@ -252,6 +256,7 @@ public class ResultActivity extends Activity {
 
         @Override
         protected void onPostExecute(String s) {
+            progress.dismiss();
             if (item != null){
                 ((TextView) findViewById(R.id.textView_title)).setText(item.getTitle());
                 ((TextView) findViewById(R.id.textView_category)).setText(item.getCategory());
