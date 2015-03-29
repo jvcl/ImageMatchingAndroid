@@ -262,6 +262,7 @@ public class ResultActivity extends Activity {
                 ((TextView) findViewById(R.id.textView_category)).setText(item.getCategory());
                 ((TextView) findViewById(R.id.textView_origin)).setText(item.getOrigin());
                 ((TextView) findViewById(R.id.textView_description)).setText(item.getDescription());
+                ((TextView) findViewById(R.id.textView_ingredients)).setText(item.getIngredients());
             }
 
             super.onPostExecute(s);

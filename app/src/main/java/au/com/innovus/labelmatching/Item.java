@@ -9,6 +9,7 @@ public class Item {
     private String origin;
     private String category;
     private String description;
+    private String ingredients;
     public  Item(){
     }
 
@@ -30,5 +31,8 @@ public class Item {
     }
     public String getDescription() {
         return description;
+    }
+    public String getIngredients() {
+        return ingredients;
     }
 }
