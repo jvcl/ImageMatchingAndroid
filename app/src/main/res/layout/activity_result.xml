@@ -7,41 +7,84 @@
     android:orientation="vertical"
     tools:context="au.com.innovus.labelmatching.ResultActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/imageView"
-        android:layout_weight="1" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="#ffff"
+        android:elevation="2dp">
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
-            android:id="@+id/textView_title"
-            android:textSize="25sp"
-            android:layout_margin="5dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Origin"
-            android:id="@+id/textView_origin"
-            android:textSize="25sp"
-            android:layout_margin="5dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Category"
-            android:id="@+id/textView_category"
-            android:textSize="25sp"
-            android:layout_margin="5dp" />
+            android:id="@+id/imageView" />
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/scrollView"
+        android:layout_weight="2"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:background="#ffffff">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:id="@+id/textView_title"
+                    android:textSize="30sp"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Origin"
+                    android:id="@+id/textView_origin"
+                    android:textSize="20sp"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+                    android:id="@+id/textView_category"
+                    android:textSize="20sp"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:background="#ffffff"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_description"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

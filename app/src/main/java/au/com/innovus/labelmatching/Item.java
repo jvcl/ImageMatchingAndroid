@@ -8,6 +8,7 @@ public class Item {
     private String title;
     private String origin;
     private String category;
+    private String description;
     public  Item(){
     }
 
@@ -26,5 +27,8 @@ public class Item {
 
     public String getCategory() {
         return category;
+    }
+    public String getDescription() {
+        return description;
     }
 }
