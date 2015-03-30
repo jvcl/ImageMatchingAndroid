@@ -38,28 +38,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onClick(View v) {
 
         //Get if of view
@@ -91,31 +69,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 fileImage = new File(fileUri.getPath());
 
                 uploadImage();
-
-                /*
-                //Decode image size
-                BitmapFactory.Options o = new BitmapFactory.Options();
-                o.inJustDecodeBounds = true;
-                try {
-                    BitmapFactory.decodeStream(new FileInputStream(fileImage),null,o);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                Log.d("TAG", o.outWidth+"" );
-                Log.d("TAG", o.outHeight+"" );
-                Log.d("TAG", fileImage.getAbsolutePath()+"" );
-                Bitmap bitmap = null;
-                try {
-                    bitmap = decodeFile(fileImage);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                Log.d("TAG", bitmap.getHeight() + "");
-                Log.d("TAG", bitmap.getWidth()+"" );
-
-                */
 
             } else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the image capture
