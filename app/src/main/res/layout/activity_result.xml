@@ -27,27 +27,54 @@
         android:layout_height="0dp"
         android:id="@+id/scrollView"
         android:layout_weight="2"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:visibility="visible">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+
+            >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/linear_not_match"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:background="#ffffff"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="We can not find a match at the moment, Try Again!"
+                    android:id="@+id/textView3"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:layout_margin="5dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:elevation="2dp"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:id="@+id/linear_title"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Title"
                     android:id="@+id/textView_title"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:gravity="center_horizontal" />
 
                 <TextView
@@ -73,7 +100,9 @@
                 android:layout_height="wrap_content"
                 android:elevation="2dp"
                 android:background="#ffffff"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:id="@+id/linear_description"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -100,7 +129,9 @@
                 android:elevation="2dp"
                 android:background="#ffffff"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp" >
+                android:layout_marginBottom="20dp"
+                android:id="@+id/linear_ingredients"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="fill_parent"

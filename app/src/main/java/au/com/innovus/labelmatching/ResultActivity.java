@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -185,12 +187,9 @@ public class ResultActivity extends Activity {
                     br.close();
                     String ss = sb.toString();
 
-
-
                     Gson gson = new Gson();
                     item = gson.fromJson(ss,Item.class);
                     Log.d(TAG, item.toString());
-                    // OK ..
 
                 }
 
@@ -233,7 +232,19 @@ public class ResultActivity extends Activity {
         @Override
         protected void onPostExecute(String s) {
             progress.dismiss();
+
+            if(serverResponseCode == 404){
+
+                findViewById(R.id.linear_not_match).setVisibility(View.VISIBLE);
+            }
+
+
             if (item != null){
+
+                findViewById(R.id.linear_title).setVisibility(View.VISIBLE);
+                findViewById(R.id.linear_description).setVisibility(View.VISIBLE);
+                findViewById(R.id.linear_ingredients).setVisibility(View.VISIBLE);
+
                 ((TextView) findViewById(R.id.textView_title)).setText(item.getTitle());
                 ((TextView) findViewById(R.id.textView_category)).setText(item.getCategory());
                 ((TextView) findViewById(R.id.textView_origin)).setText(item.getOrigin());
