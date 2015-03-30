@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:text="Title"
                     android:id="@+id/textView_title"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:gravity="center_horizontal" />
 
                 <TextView
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:text="Origin"
                     android:id="@+id/textView_origin"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:gravity="center_horizontal" />
 
                 <TextView
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:text="Category"
                     android:id="@+id/textView_category"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:gravity="center_horizontal" />
             </LinearLayout>
 
