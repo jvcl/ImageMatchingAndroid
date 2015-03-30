@@ -11,6 +11,19 @@
         android:text="Match Label"
         android:id="@+id/button_match"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:background="#1B75BB"
+        android:textColor="#FFFF"
+        android:minWidth="300dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView2"
+        android:layout_above="@+id/button_match"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon"
+        android:padding="25dp" />
 
 </RelativeLayout>

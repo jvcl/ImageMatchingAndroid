@@ -15,8 +15,8 @@
 <resources>
 
     <!-- Default background color for the status bar. -->
-    <color name="primary">#4CAF50</color>
-    <color name="primary_dark">#4CAF50</color>
+    <color name="primary">#1B75BB</color>
+    <color name="primary_dark">#1B75BB</color>
     <color name="window_background">#E8F5E9</color>
-    <color name="nav_bar">#4CAF50</color>
+    <color name="nav_bar">#1B75BB</color>
 </resources>
