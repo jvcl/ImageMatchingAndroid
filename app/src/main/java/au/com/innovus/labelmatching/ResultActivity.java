@@ -39,7 +39,7 @@ public class ResultActivity extends Activity {
     String filePath;
     private static final String TAG = MainActivity.class.getSimpleName();
     ProgressDialog progress;
-    String upLoadServerUri = "http://192.168.1.31:5000/upload";
+    String upLoadServerUri = "http://107.191.56.252:8000/upload";
     int serverResponseCode = 0;
 
     private Item item = null;
